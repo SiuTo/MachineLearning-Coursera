@@ -22,8 +22,17 @@ idx = zeros(size(X,1), 1);
 %
 
 
-
-
+for i = 1:size(X, 1)
+	mind = 0;
+	for j = 1:K
+		delta = X(i, :)-centroids(j, :);
+		dist = delta*delta';
+		if j==1 || dist<mind
+			mind = dist;
+			idx(i) = j;
+		end
+	end
+end
 
 
 
