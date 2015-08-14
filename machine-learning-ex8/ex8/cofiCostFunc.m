@@ -41,17 +41,14 @@ Theta_grad = zeros(size(Theta));
 %
 
 
+residual = (X*Theta'-Y).*R;
+J = 0.5*sum(sum(residual.^2));
+X_grad = residual*Theta;
+Theta_grad = residual'*X;
 
-
-
-
-
-
-
-
-
-
-
+J = J+lambda/2*(sum(sum(Theta.^2))+sum(sum(X.^2)));
+X_grad = X_grad+lambda*X;
+Theta_grad = Theta_grad+lambda*Theta;
 
 
 
